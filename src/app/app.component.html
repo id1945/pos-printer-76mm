@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Pos Printer 4barcode</h2>
+  <div class="form-group">
+    <label for="">Tên người nhận:</label>
+    <input type="text" [(ngModel)]="name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="">Điện thoại:</label>
+    <input type="text" [(ngModel)]="phone" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">Địa chỉ:</label>
+    <input type="text" [(ngModel)]="address" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">Mã đơn:</label>
+    <input type="text" [(ngModel)]="code" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">Tổng thu COD:</label>
+    <input type="number" [(ngModel)]="sum" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">Ghi chú:</label>
+    <input type="text" [(ngModel)]="description" class="form-control"/>
+  </div>
+  <button [print]="['demo']" class="btn btn-info m-1" (click)="onClick()">Print + Save</button>
+</div>
+<table id="demo" class="table table-bordered">
+  <tr>
+    <th>
+      <img src="https://sellossanz.com/4817-large_default/sello-lacre-letra-floreada.jpg">
+    </th>
+    <th>
+      <h2>Z.BRASS</h2>
+      <p>Địa chỉ: Di Trạch, Hoài Đức, Hà Nội</p>
+      <p>Hotline: 0845.882.882</p>
+    </th>
+  </tr>
+  <tr class="content">
+    <td colspan="2">
+      <p>Tên người nhận: {{name}}</p>
+      <p>Điện thoại: {{phone}}</p>
+      <p>Địa chỉ: {{address}}</p>
+    </td>
+  </tr>
+  <tr>
+    <td class="code">Mã đơn: {{code}} </td>
+    <td>Tổng thu COD: {{(sum | currency: 'VNĐ').replace('VNĐ','')}} VNĐ</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      Ghi chú: {{description}}
+    </td>
+  </tr>
+</table>
