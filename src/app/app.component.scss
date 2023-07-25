@@ -1,0 +1,78 @@
+h5 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+table {
+  border: 1px solid #000;
+  height: 100%;
+  width: calc(100% - 5%);
+  margin: 20px;
+
+  th {
+    text-align: center;
+
+    img {
+      width: 120px;
+    }
+
+    :where(p, h2) {
+      margin: 2px;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+    }
+  }
+
+  :where(th, td) {
+    padding: 5px;
+    border: 1px solid #000 !important;
+    font-size: 19px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .code {
+    min-width: 180px;
+    max-width: 180px;
+  }
+
+  .content {
+    &>tr {
+      padding: 15px;
+    }
+
+    p {
+      margin: 8px;
+    }
+  }
+}
+
+
+@media print {
+  table {
+    writing-mode: vertical-rl;
+    width: 100%;
+    margin: 0px;
+  }
+
+  th {
+    img {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.container {
+  display: flex;
+}
+
+@media all and (min-width: 400px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .container {
+    flex-direction: row;
+  }
+}

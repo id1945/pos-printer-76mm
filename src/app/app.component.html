@@ -1,56 +1,66 @@
 <div class="container">
-  <h2>Pos Printer 4barcode</h2>
-  <div class="form-group">
-    <label for="">Tên người nhận:</label>
-    <input type="text" [(ngModel)]="name" class="form-control" />
+  <div>
+    <table id="demo" class="table table-bordered">
+      <tr>
+        <th>
+          <img src="https://sellossanz.com/4817-large_default/sello-lacre-letra-floreada.jpg">
+        </th>
+        <th>
+          <h2>Z.BRASS</h2>
+          <p>Địa chỉ: Di Trạch, Hoài Đức, Hà Nội</p>
+          <p>Hotline: 0845.882.882</p>
+        </th>
+      </tr>
+      <tr class="content">
+        <td colspan="2">
+          <p>Tên người nhận: {{formGroup.value?.name}}</p>
+          <p>Điện thoại: {{formGroup.value?.phone}}</p>
+          <p>Địa chỉ: {{formGroup.value?.address}}</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="code">Mã vận đơn: {{formGroup.value?.code}} </td>
+        <td>Tổng thu COD: {{(formGroup.value?.sum | currency: 'VNĐ')?.replace('VNĐ','')}} VNĐ</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          Ghi chú: {{formGroup.value?.description}}
+        </td>
+      </tr>
+    </table>
   </div>
-  <div class="form-group">
-    <label for="">Điện thoại:</label>
-    <input type="text" [(ngModel)]="phone" class="form-control"/>
+  <div class="print-none">
+    <form [formGroup]="formGroup">
+      <h2>Pos Printer 4barcode</h2>
+      <div class="form-group">
+        <label>Tên người nhận <span class="text-danger">(*)</span></label>
+        <input type="text" formControlName="name" class="form-control" />
+        <app-form-errors controlName="name" [messages]="{ required: 'Tên người nhận là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Điện thoại <span class="text-danger">(*)</span></label>
+        <input type="text" formControlName="phone" class="form-control" />
+        <app-form-errors controlName="name" [messages]="{ required: 'Điện thoại là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Địa chỉ <span class="text-danger">(*)</span></label>
+        <textarea formControlName="address" class="form-control" rows="4"></textarea>
+        <app-form-errors controlName="name" [messages]="{ required: 'Địa chỉ là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Mã đơn:</label>
+        <input type="text" formControlName="code" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Tổng thu COD <span class="text-danger">(*)</span></label>
+        <input type="number" formControlName="sum" class="form-control" />
+        <app-form-errors controlName="name" [messages]="{ required: 'Tổng thu COD là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Ghi chú:</label>
+        <textarea formControlName="description" class="form-control" rows="4"></textarea>
+      </div>
+      <button class="btn btn-info m-1" (click)="onClick()">Print + Save</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="">Địa chỉ:</label>
-    <input type="text" [(ngModel)]="address" class="form-control"/>
-  </div>
-  <div class="form-group">
-    <label for="">Mã đơn:</label>
-    <input type="text" [(ngModel)]="code" class="form-control"/>
-  </div>
-  <div class="form-group">
-    <label for="">Tổng thu COD:</label>
-    <input type="number" [(ngModel)]="sum" class="form-control"/>
-  </div>
-  <div class="form-group">
-    <label for="">Ghi chú:</label>
-    <input type="text" [(ngModel)]="description" class="form-control"/>
-  </div>
-  <button [print]="['demo']" class="btn btn-info m-1" (click)="onClick()">Print + Save</button>
 </div>
-<table id="demo" class="table table-bordered">
-  <tr>
-    <th>
-      <img src="https://sellossanz.com/4817-large_default/sello-lacre-letra-floreada.jpg">
-    </th>
-    <th>
-      <h2>Z.BRASS</h2>
-      <p>Địa chỉ: Di Trạch, Hoài Đức, Hà Nội</p>
-      <p>Hotline: 0845.882.882</p>
-    </th>
-  </tr>
-  <tr class="content">
-    <td colspan="2">
-      <p>Tên người nhận: {{name}}</p>
-      <p>Điện thoại: {{phone}}</p>
-      <p>Địa chỉ: {{address}}</p>
-    </td>
-  </tr>
-  <tr>
-    <td class="code">Mã đơn: {{code}} </td>
-    <td>Tổng thu COD: {{(sum | currency: 'VNĐ').replace('VNĐ','')}} VNĐ</td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      Ghi chú: {{description}}
-    </td>
-  </tr>
-</table>
