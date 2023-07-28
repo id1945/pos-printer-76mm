@@ -1,0 +1,162 @@
+<div class="container">
+  <div>
+    <table id="demo" class="table table-bordered">
+      <tr>
+        <th [style.fontSize.px]="setting.style.fontSize">
+          <img src="{{setting.shop.logo.url}}" [width]="setting.shop.logo.width" [height]="setting.shop.logo.height"/>
+        </th>
+        <th [style.fontSize.px]="setting.style.fontSize">
+          <h2>{{setting.shop.name}}</h2>
+          <p>{{setting.shop.address}}</p>
+          <p>{{setting.shop.phone}}</p>
+        </th>
+      </tr>
+      <tr class="content">
+        <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
+          <p>{{setting.sending.name}} {{formGroup.value?.name}}</p>
+          <p>{{setting.sending.phone}} {{formGroup.value?.phone}}</p>
+          <p>{{setting.sending.address}} {{formGroup.value?.address}}</p>
+          <p>{{setting.sending.content}} {{formGroup.value?.content}}</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="code" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.code}} {{formGroup.value?.code}} </td>
+        <td [style.fontSize.px]="setting.style.fontSize">{{setting.sending.sum}} {{(formGroup.value?.sum | currency: setting.sending.currency)?.replace(setting.sending.currency,'')}} {{setting.sending.currency}}</td>
+      </tr>
+      <tr>
+        <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
+          {{setting.sending.description}} {{formGroup.value?.description}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- layout -->
+  <div class="print-none">
+    <form [formGroup]="formGroup">
+      <h2>Pos Printer 4barcode</h2>
+      <div class="form-group">
+        <label>Tên người nhận <span class="text-danger">(*)</span></label>
+        <input type="text" formControlName="name" class="form-control" />
+        <app-form-errors controlName="name" [messages]="{ required: 'Tên người nhận là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Điện thoại <span class="text-danger">(*)</span></label>
+        <input type="text" formControlName="phone" class="form-control" />
+        <app-form-errors controlName="phone" [messages]="{ required: 'Điện thoại là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Địa chỉ <span class="text-danger">(*)</span></label>
+        <textarea formControlName="address" class="form-control" rows="4"></textarea>
+        <app-form-errors controlName="address" [messages]="{ required: 'Địa chỉ là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Nội dung <span class="text-danger">(*)</span></label>
+        <input type="text" formControlName="content" class="form-control" />
+        <app-form-errors controlName="content" [messages]="{ required: 'Nội dung là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Mã đơn:</label>
+        <input type="text" formControlName="code" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Tổng thu COD <span class="text-danger">(*)</span></label>
+        <input type="number" formControlName="sum" class="form-control" />
+        <app-form-errors controlName="sum" [messages]="{ required: 'Tổng thu COD là bắt buộc' }"></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label>Ghi chú:</label>
+        <textarea formControlName="description" class="form-control" rows="4"></textarea>
+      </div>
+      <button class="btn btn-info m-1" (click)="onClick()">Print + Save</button>
+      <!-- Button trigger modal -->
+      <button class="btn btn-success m-1" data-toggle="modal" data-target="#exampleModal">Setting</button>
+      <button class="btn btn-danger m-1" (click)="onReset()">Reset</button>
+    </form>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Setting Pos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <!-- left -->
+            <div class="col-sm-12 col-lg-6">
+              <h4>Cài đặt chung</h4>
+              <div class="form-group">
+                <label>Kích thước font chữ</label>
+                <input type="text" [(ngModel)]="setting.style.fontSize" class="form-control" />
+              </div>
+              <h4>Thông tin shop của tôi</h4>
+              <div class="form-group">
+                <label>Tên người nhận</label>
+                <input type="text" [(ngModel)]="setting.shop.name" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Điện thoại</label>
+                <input type="text" [(ngModel)]="setting.shop.phone" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" [(ngModel)]="setting.shop.address" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label>Logo URL</label>
+                <input type="text" [(ngModel)]="setting.shop.logo.url" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label>Logo width</label>
+                <input type="text" [(ngModel)]="setting.shop.logo.width" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label>Logo height</label>
+                <input type="text" [(ngModel)]="setting.shop.logo.height" class="form-control"/>
+              </div>
+            </div>
+            <!-- right -->
+            <div class="col-sm-12 col-lg-6">
+              <h4>Thông tin người nhận và nội dung</h4>
+              <div class="form-group">
+                <label>Tên người nhận</label>
+                <input type="text" [(ngModel)]="setting.sending.name" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Điện thoại</label>
+                <input type="text" [(ngModel)]="setting.sending.phone" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" [(ngModel)]="setting.sending.address" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label>Nội dung</label>
+                <input type="text" [(ngModel)]="setting.sending.content" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Mã đơn</label>
+                <input type="text" [(ngModel)]="setting.sending.code" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Tổng thu COD</label>
+                <input type="text" [(ngModel)]="setting.sending.sum" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Ghi chú</label>
+                <input type="text" [(ngModel)]="setting.sending.description" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="onSettingSave()" data-dismiss="modal" aria-label="Close">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
