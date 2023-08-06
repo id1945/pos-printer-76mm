@@ -26,7 +26,7 @@ export class AppComponent {
     },
     shop: {
       name: 'Z.BRASS',
-      address: 'Địa chỉ: Di Trạch, Hoài Đức, Hà Nội',
+      address: 'Địa chỉ: Hồ Tùng Mậu, Cầu Giấy, Hà Nội',
       phone: 'Hotline: 0845.882.882',
       logo: {
         width: '100',
