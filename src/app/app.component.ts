@@ -47,7 +47,7 @@ export class AppComponent {
       sum: 'Tổng thu COD:',
       description: 'Ghi chú:',
       currency: 'VNĐ',
-      format: '0'
+      format: '1.0' // https://stackblitz.com/edit/angular-currency-decimal-percent-pipe
     }
   }
 
