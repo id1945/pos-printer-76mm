@@ -6,7 +6,7 @@
           <img src="{{setting.shop.logo.url}}" [width]="setting.shop.logo.width" [height]="setting.shop.logo.height"/>
         </th>
         <th [style.fontSize.px]="setting.style.fontSize">
-          <h2 *ngIf="setting.shop.shopName">{{setting.shop.shopName}}</h2>
+          <h2 *ngIf="setting.shop.title">{{setting.shop.title}}</h2>
           <p>{{setting.shop.address}}</p>
           <p *ngIf="setting.shop.name">{{setting.shop.name}}</p>
           <p>{{setting.shop.phone}}</p>
@@ -36,14 +36,9 @@
     <form [formGroup]="formGroup">
       <h2>Pos Printer 4barcode</h2>
       <div class="form-group">
-        <label>Tên shop <span class="text-danger">(*)</span></label>
-        <input type="text" formControlName="shopName" class="form-control" />
-        <app-form-errors controlName="shopName" [messages]="{ required: 'Tên shop là bắt buộc' }"></app-form-errors>
-      </div>
-      <div class="form-group">
-        <label>Tên người gửi <span class="text-danger">(*)</span></label>
+        <label>Tên người nhận <span class="text-danger">(*)</span></label>
         <input type="text" formControlName="name" class="form-control" />
-        <app-form-errors controlName="name" [messages]="{ required: 'Tên người gửi là bắt buộc' }"></app-form-errors>
+        <app-form-errors controlName="name" [messages]="{ required: 'Tên người nhận là bắt buộc' }"></app-form-errors>
       </div>
       <div class="form-group">
         <label>Điện thoại <span class="text-danger">(*)</span></label>
@@ -104,7 +99,11 @@
               </div>
               <h5>Thông tin shop của tôi</h5>
               <div class="form-group">
-                <label>Tên người nhận</label>
+                <label>Tên shop</label>
+                <input type="text" [(ngModel)]="setting.shop.title" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Tên người gửi</label>
                 <input type="text" [(ngModel)]="setting.shop.name" class="form-control" />
               </div>
               <div class="form-group">
