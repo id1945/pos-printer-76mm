@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxPrintElementService } from 'ngx-print-element';
 
 interface Pos {
+  shopName: string;
   name: string;
   phone: string;
   address: string;
