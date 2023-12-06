@@ -31,7 +31,7 @@ export class AppComponent {
       title: 'Z.BRASS',
       name: 'Người gửi: Dương Hữu Đại',
       address: 'Địa chỉ: Hồ Tùng Mậu, Cầu Giấy, Hà Nội',
-      phone: 'Điện thoại: 0845.882.882',
+      phone: 'Số điện thoại: 0845.882.882',
       logo: {
         width: '100',
         height: '100',
