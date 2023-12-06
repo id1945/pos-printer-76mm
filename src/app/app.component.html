@@ -13,7 +13,7 @@
       </tr>
       <tr class="content">
         <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
-          <p>{{setting.sending.name}} <strong>{{formGroup.value?.name}}</strong></p>
+          <p>{{setting.sending.name}} <span [style.fontSize.px]="setting.style.sending.fontSize">{{formGroup.value?.name}}</span></p>
           <p>{{setting.sending.phone}} {{formGroup.value?.phone}}</p>
           <p>{{setting.sending.address}} {{formGroup.value?.address}}</p>
           <p>{{setting.sending.content}} {{formGroup.value?.content}}</p>
@@ -87,12 +87,16 @@
           <div class="row">
             <!-- left -->
             <div class="col-sm-12 col-lg-6">
-              <h4>Cài đặt chung</h4>
+              <h5>Cài đặt chung</h5>
               <div class="form-group">
-                <label>Kích thước font chữ</label>
+                <label>Font size all</label>
                 <input type="text" [(ngModel)]="setting.style.fontSize" class="form-control" />
               </div>
-              <h4>Thông tin shop của tôi</h4>
+              <div class="form-group">
+                <label>Font size tên người nhận</label>
+                <input type="text" [(ngModel)]="setting.style.sending.fontSize" class="form-control" />
+              </div>
+              <h5>Thông tin shop của tôi</h5>
               <div class="form-group">
                 <label>Tên người nhận</label>
                 <input type="text" [(ngModel)]="setting.shop.name" class="form-control" />
@@ -120,7 +124,7 @@
             </div>
             <!-- right -->
             <div class="col-sm-12 col-lg-6">
-              <h4>Thông tin người nhận và nội dung</h4>
+              <h5>Thông tin người nhận và nội dung</h5>
               <div class="form-group">
                 <label>Tên người nhận</label>
                 <input type="text" [(ngModel)]="setting.sending.name" class="form-control" />
