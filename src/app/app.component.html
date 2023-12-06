@@ -68,7 +68,7 @@
         <label>Ghi chú:</label>
         <textarea formControlName="description" class="form-control" rows="2"></textarea>
       </div>
-      <button class="btn btn-info m-1" (click)="onClick()">Print + Save</button>
+      <button class="btn btn-info m-1" (click)="onClick()">Print</button>
       <!-- Button trigger modal -->
       <button class="btn btn-success m-1" data-toggle="modal" data-target="#exampleModal">Setting</button>
       <button class="btn btn-danger m-1" (click)="onReset()">Reset</button>
@@ -164,7 +164,7 @@
               </div>
               <div class="form-group">
                 <label>Format tiền</label>
-                <input type="text" [(ngModel)]="setting.sending.currency" class="form-control" />
+                <input type="text" [(ngModel)]="setting.sending.format" class="form-control" />
               </div>
             </div>
           </div>
