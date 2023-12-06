@@ -22,7 +22,10 @@ export class AppComponent {
   public formGroup: FormGroup;
   public setting = {
     style: {
-      fontSize: '19'
+      fontSize: '19',
+      sending: {
+        fontSize: '19'
+      }
     },
     shop: {
       shopName: 'Z.BRASS',
