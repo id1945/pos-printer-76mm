@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxPrintElementService } from 'ngx-print-element';
 
 interface Pos {
-  shopName: string;
   name: string;
   phone: string;
   address: string;
@@ -29,8 +28,8 @@ export class AppComponent {
       }
     },
     shop: {
-      shopName: 'Z.BRASS',
-      name: 'Dương Hữu Đại',
+      title: 'Z.BRASS',
+      name: 'Người gửi: Dương Hữu Đại',
       address: 'Địa chỉ: Hồ Tùng Mậu, Cầu Giấy, Hà Nội',
       phone: 'Hotline: 0845.882.882',
       logo: {
