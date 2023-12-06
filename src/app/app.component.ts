@@ -24,7 +24,7 @@ export class AppComponent {
     style: {
       fontSize: '19',
       sending: {
-        fontSize: '19'
+        fontSize: '24'
       }
     },
     shop: {
