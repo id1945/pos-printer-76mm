@@ -55,11 +55,8 @@ export class AppComponent {
     const store = localStorage.getItem('Z.BRASS');
     const posData: Pos = store ? JSON.parse(store) : null;
     this.formGroup = new FormGroup({
-      shopName: new FormControl(posData?.shopName, {
-        validators: [],
-      }),
       name: new FormControl(posData?.name, {
-        validators: [],
+        validators: [Validators.required],
       }),
       phone: new FormControl(posData?.phone, {
         validators: [Validators.required],
