@@ -25,7 +25,8 @@ export class AppComponent {
       fontSize: '19'
     },
     shop: {
-      name: 'Z.BRASS',
+      shopName: 'Z.BRASS',
+      name: 'Dương Hữu Đại',
       address: 'Địa chỉ: Hồ Tùng Mậu, Cầu Giấy, Hà Nội',
       phone: 'Hotline: 0845.882.882',
       logo: {
@@ -50,8 +51,11 @@ export class AppComponent {
     const store = localStorage.getItem('Z.BRASS');
     const posData: Pos = store ? JSON.parse(store) : null;
     this.formGroup = new FormGroup({
+      name: new FormControl(posData?.shopName, {
+        validators: [],
+      }),
       name: new FormControl(posData?.name, {
-        validators: [Validators.required],
+        validators: [],
       }),
       phone: new FormControl(posData?.phone, {
         validators: [Validators.required],
