@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td class="code" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.code}} {{formGroup.value?.code}} </td>
-        <td [style.fontSize.px]="setting.style.fontSize">{{setting.sending.sum}} {{(formGroup.value?.sum | currency: setting.sending.format)?.replace(setting.sending.currency,'')}} {{setting.sending.currency}}</td>
+        <td [style.fontSize.px]="setting.style.fontSize">{{setting.sending.sum}} {{formGroup.value?.sum | number: setting.sending.format}} {{setting.sending.currency}}</td>
       </tr>
       <tr>
         <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
