@@ -47,7 +47,8 @@ export class AppComponent {
       code: 'Mã vận đơn:',
       sum: 'Tổng thu COD:',
       description: 'Ghi chú:',
-      currency: 'VNĐ'
+      currency: 'VNĐ',
+      format: '0'
     }
   }
 
