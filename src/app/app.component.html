@@ -13,7 +13,7 @@
       </tr>
       <tr class="content">
         <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
-          <p>{{setting.sending.name}} {{formGroup.value?.name}}</p>
+          <p>{{setting.sending.name}} <strong>{{formGroup.value?.name}}</strong></p>
           <p>{{setting.sending.phone}} {{formGroup.value?.phone}}</p>
           <p>{{setting.sending.address}} {{formGroup.value?.address}}</p>
           <p>{{setting.sending.content}} {{formGroup.value?.content}}</p>
@@ -148,6 +148,10 @@
               <div class="form-group">
                 <label>Ghi chú</label>
                 <input type="text" [(ngModel)]="setting.sending.description" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Format</label>
+                <input type="text" [(ngModel)]="setting.sending.currency" class="form-control" />
               </div>
             </div>
           </div>
