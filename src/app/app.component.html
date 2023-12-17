@@ -47,7 +47,7 @@
       </div>
       <div class="col-lg-6 col-sm-12">
         <div class="form-group">
-          <label>Mã đơn:</label>
+          <label>Mã vận đơn:</label>
           <input type="text" formControlName="code" class="form-control" />
         </div>
       </div>
@@ -60,19 +60,6 @@
       </div>
       <div class="col-lg-6 col-sm-12">
         <div class="form-group">
-          <label>Ghi chú:</label>
-          <textarea formControlName="description" class="form-control" rows="1"></textarea>
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-12">
-        <div class="form-group">
-          <label>Địa chỉ <span class="text-danger">(*)</span></label>
-          <textarea formControlName="address" class="form-control" rows="1"></textarea>
-          <app-form-errors controlName="address" [messages]="{ required: 'Địa chỉ là bắt buộc' }"></app-form-errors>
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-12">
-        <div class="form-group">
           <label>Tổng thu COD <span class="text-danger">(*)</span></label>
           <input type="number" formControlName="sum" class="form-control" />
           <app-form-errors controlName="sum" [messages]="{ required: 'Tổng thu COD là bắt buộc' }"></app-form-errors>
@@ -80,8 +67,21 @@
       </div>
       <div class="col-lg-6 col-sm-12">
         <div class="form-group">
+          <label>Địa chỉ <span class="text-danger">(*)</span></label>
+          <textarea formControlName="address" class="form-control" rows="3"></textarea>
+          <app-form-errors controlName="address" [messages]="{ required: 'Địa chỉ là bắt buộc' }"></app-form-errors>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Ghi chú:</label>
+          <textarea formControlName="description" class="form-control" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
           <label>Nội dung <span class="text-danger">(*)</span></label>
-          <textarea formControlName="content" class="form-control" rows="1"></textarea>
+          <textarea formControlName="content" class="form-control" rows="3"></textarea>
           <app-form-errors controlName="content" [messages]="{ required: 'Nội dung là bắt buộc' }"></app-form-errors>
         </div>
       </div>

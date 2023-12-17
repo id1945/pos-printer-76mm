@@ -40,7 +40,7 @@ export class AppComponent {
       }
     },
     sending: {
-      name: 'Tên người nhận:',
+      name: 'Người nhận:',
       address: 'Địa chỉ:',
       phone: 'Điện thoại:',
       content: 'Nội dung:',
