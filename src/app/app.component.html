@@ -1,90 +1,115 @@
 <div class="container">
-  <div>
-    <table id="demo" class="table table-bordered">
-      <tr>
-        <th [style.fontSize.px]="setting.style.fontSize">
-          <img src="{{setting.shop.logo.url}}" [width]="setting.shop.logo.width" [height]="setting.shop.logo.height"/>
-        </th>
-        <th [style.fontSize.px]="setting.style.fontSize">
-          <h2 *ngIf="setting.shop.title">{{setting.shop.title}}</h2>
-          <p *ngIf="setting.shop.name">{{setting.shop.name}}</p>
-          <p>{{setting.shop.phone}}</p>
-          <p>{{setting.shop.address}}</p>
-        </th>
-      </tr>
-      <tr class="content">
-        <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
-          <p>{{setting.sending.name}} <span [style.fontSize.px]="setting.style.sending.fontSize">{{formGroup.value?.name}}</span></p>
-          <p>{{setting.sending.phone}} {{formGroup.value?.phone}}</p>
-          <p>{{setting.sending.address}} {{formGroup.value?.address}}</p>
-          <p>{{setting.sending.content}} {{formGroup.value?.content}}</p>
-        </td>
-      </tr>
-      <tr>
-        <td class="code" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.code}} {{formGroup.value?.code}} </td>
-        <td [style.fontSize.px]="setting.style.fontSize">{{setting.sending.sum}} {{formGroup.value?.sum | number: setting.sending.format}} {{setting.sending.currency}}</td>
-      </tr>
-      <tr>
-        <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
-          {{setting.sending.description}} {{formGroup.value?.description}}
-        </td>
-      </tr>
-    </table>
+  <div class="row mb-2">
+    <div class="col-12">
+      <table id="demo" class="table table-bordered">
+        <tr>
+          <th [style.fontSize.px]="setting.style.fontSize">
+            <img src="{{setting.shop.logo.url}}" [width]="setting.shop.logo.width" [height]="setting.shop.logo.height"/>
+          </th>
+          <th [style.fontSize.px]="setting.style.fontSize">
+            <h2 *ngIf="setting.shop.title">{{setting.shop.title}}</h2>
+            <p *ngIf="setting.shop.name">{{setting.shop.name}}</p>
+            <p>{{setting.shop.phone}}</p>
+            <p>{{setting.shop.address}}</p>
+          </th>
+        </tr>
+        <tr class="content">
+          <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
+            <p>{{setting.sending.name}} <span [style.fontSize.px]="setting.style.sending.fontSize">{{formGroup.value?.name}}</span></p>
+            <p>{{setting.sending.phone}} {{formGroup.value?.phone}}</p>
+            <p>{{setting.sending.address}} {{formGroup.value?.address}}</p>
+            <p>{{setting.sending.content}} {{formGroup.value?.content}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.sum}} {{formGroup.value?.sum | number: setting.sending.format}} {{setting.sending.currency}}</td>
+        </tr>
+        <tr *ngIf="formGroup.value?.code">
+          <td colspan="2" class="code" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.code}} {{formGroup.value?.code}} </td>
+        </tr>
+        <tr *ngIf="formGroup.value?.description">
+          <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
+            {{setting.sending.description}} {{formGroup.value?.description}}
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
   <!-- layout -->
-  <div class="print-none">
-    <form [formGroup]="formGroup">
-      <h2>Pos Printer 4barcode</h2>
-      <div class="form-group">
-        <label>Tên người nhận <span class="text-danger">(*)</span></label>
-        <input type="text" formControlName="name" class="form-control" />
-        <app-form-errors controlName="name" [messages]="{ required: 'Tên người nhận là bắt buộc' }"></app-form-errors>
+  <div class="print-none border-custom">
+    <form [formGroup]="formGroup" class="row">
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Tên người nhận <span class="text-danger">(*)</span></label>
+          <input type="text" formControlName="name" class="form-control" />
+          <app-form-errors controlName="name" [messages]="{ required: 'Tên người nhận là bắt buộc' }"></app-form-errors>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Điện thoại <span class="text-danger">(*)</span></label>
-        <input type="text" formControlName="phone" class="form-control" />
-        <app-form-errors controlName="phone" [messages]="{ required: 'Điện thoại là bắt buộc' }"></app-form-errors>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Mã đơn:</label>
+          <input type="text" formControlName="code" class="form-control" />
+        </div>
       </div>
-      <div class="form-group">
-        <label>Địa chỉ <span class="text-danger">(*)</span></label>
-        <textarea formControlName="address" class="form-control" rows="2"></textarea>
-        <app-form-errors controlName="address" [messages]="{ required: 'Địa chỉ là bắt buộc' }"></app-form-errors>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Điện thoại <span class="text-danger">(*)</span></label>
+          <input type="text" formControlName="phone" class="form-control" />
+          <app-form-errors controlName="phone" [messages]="{ required: 'Điện thoại là bắt buộc' }"></app-form-errors>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Nội dung <span class="text-danger">(*)</span></label>
-        <input type="text" formControlName="content" class="form-control" />
-        <app-form-errors controlName="content" [messages]="{ required: 'Nội dung là bắt buộc' }"></app-form-errors>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Ghi chú:</label>
+          <textarea formControlName="description" class="form-control" rows="1"></textarea>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Mã đơn:</label>
-        <input type="text" formControlName="code" class="form-control" />
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Địa chỉ <span class="text-danger">(*)</span></label>
+          <textarea formControlName="address" class="form-control" rows="1"></textarea>
+          <app-form-errors controlName="address" [messages]="{ required: 'Địa chỉ là bắt buộc' }"></app-form-errors>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Tổng thu COD <span class="text-danger">(*)</span></label>
-        <input type="number" formControlName="sum" class="form-control" />
-        <app-form-errors controlName="sum" [messages]="{ required: 'Tổng thu COD là bắt buộc' }"></app-form-errors>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Tổng thu COD <span class="text-danger">(*)</span></label>
+          <input type="number" formControlName="sum" class="form-control" />
+          <app-form-errors controlName="sum" [messages]="{ required: 'Tổng thu COD là bắt buộc' }"></app-form-errors>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Ghi chú:</label>
-        <textarea formControlName="description" class="form-control" rows="2"></textarea>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Nội dung <span class="text-danger">(*)</span></label>
+          <textarea formControlName="content" class="form-control" rows="1"></textarea>
+          <app-form-errors controlName="content" [messages]="{ required: 'Nội dung là bắt buộc' }"></app-form-errors>
+        </div>
       </div>
-      <button class="btn btn-info m-1" (click)="onClick()">Print</button>
-      <!-- Button trigger modal -->
-      <button class="btn btn-success m-1" data-toggle="modal" data-target="#exampleModal">Setting</button>
-      <button class="btn btn-danger m-1" (click)="onReset()">Reset</button>
+      <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+          <label>Print</label>
+          <div class="form-group">
+            <button class="btn btn-info m-1" (click)="onClick()">Máy In</button>
+            <!-- Button trigger modal -->
+            <button class="btn btn-success m-1" data-toggle="modal" data-target="#exampleModal">Cài đặt</button>
+            <button class="btn btn-danger m-1" (click)="onReset()">Đặt lại</button>
+            <button class="btn btn-success m-1" data-toggle="modal" data-target="#exampleModalData">Danh sách</button>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
-  <!-- Modal -->
+  <!-- Modal seting -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Setting Pos</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Cài đặt thông tin giấy in</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body modal-body-setting">
           <div class="row">
             <!-- left -->
             <div class="col-sm-12 col-lg-6">
@@ -169,8 +194,49 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="onSettingSave()" data-dismiss="modal" aria-label="Close">Save changes</button>
+          <button type="button" class="btn btn-primary" (click)="onSettingSave()" data-dismiss="modal" aria-label="Close">Lưu</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal list data -->
+  <div class="modal fade" id="exampleModalData" tabindex="-1" role="dialog" aria-labelledby="exampleModalDatalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalDatalLabel">Danh sách thông tin người mua</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body modal-body-data">
+          <table class="data table table-hover" [style.width]="'max-content'">
+            <tr>
+              <th [style.width.px]="150">Người nhận</th>
+              <th [style.width.px]="110">Điện thoại</th>
+              <th [style.width.px]="200">Địa chỉ</th>
+              <th [style.width.px]="200">Nội dung</th>
+              <th [style.width.px]="200">Tổng tiền</th>
+              <th [style.width.px]="100">Mã đơn</th>
+              <th [style.width.px]="200">Ghi chú</th>
+              <th [style.width.px]="100" colspan="2">Thao tác</th>
+            </tr>
+            <tr *ngFor="let item of this.data">
+              <td>{{item.name}}</td>
+              <td>{{item.phone}}</td>
+              <td>{{item.address}}</td>
+              <td>{{item.content}}</td>
+              <td>{{item.sum}}</td>
+              <td>{{item.code}}</td>
+              <td>{{item.description}}</td>
+              <td><button class="btn btn-info" data-dismiss="modal" (click)="onSelected(item)">Chọn</button></td>
+              <td><button class="btn btn-danger" (click)="onDelete(item)">Xoá</button></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
         </div>
       </div>
     </div>

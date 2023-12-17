@@ -1,18 +1,6 @@
-.container {
-  div:nth-child(1) {
-    width: 100%;
-  }
-}
-
-form {
-  width: 310px;
-}
-
-table {
+table:not(.data) {
   border: 1px solid #000;
   height: 100%;
-  width: calc(100% - 5%);
-  margin: 20px;
 
   th {
     text-align: center;
@@ -67,18 +55,30 @@ table {
   }
 }
 
-.container {
-  display: flex;
+textarea {
+  min-height: 40px;
+  max-height: calc(40px * 4);
 }
 
-@media all and (min-width: 400px) {
-  .container {
-    flex-direction: column;
+.modal-body {
+  &-setting{
+    overflow-y: scroll;
+    max-height: calc(100vh - 200px);
+  }
+  &-data{
+    overflow: auto;
+    max-height: calc(100vh - 200px);
+    max-width: 766px;
+    table {
+      td {
+        padding: 2px 3px;
+      }
+    }
   }
 }
 
-@media all and (min-width: 1200px) {
-  .container {
-    flex-direction: row;
-  }
+.border-custom {
+  border: 2px dashed #00bcd4;
+  padding: 15px;
+  border-radius: 5px;
 }
