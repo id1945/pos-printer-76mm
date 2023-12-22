@@ -13,7 +13,7 @@ jobs:
       with:
         github_access_token: ${{ secrets.ACCESS_TOKEN }} # https://github.com/settings/tokens see the Configuration section for how you can create secrets
         build_configuration: production # The build environment for the app. please look configurations in your angular.json
-        base_href: /Pos-Printer-4barcode-Template/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
+        base_href: /pos-printer-76mm/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
         deploy_branch: gh-pages # The branch the action should deploy to.
         angular_dist_build_folder: dist/pos-printer76 # The folder where your project is supposed to be after running ng build by the action.
 permissions:
