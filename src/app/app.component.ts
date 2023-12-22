@@ -8,7 +8,7 @@ interface Pos {
   phone: string;
   address: string;
   content: string;
-  code: string;
+  quantity: string;
   sum: number;
   description: string;
 }
@@ -44,7 +44,7 @@ export class AppComponent {
       address: 'Địa chỉ:',
       phone: 'Điện thoại:',
       content: 'Nội dung:',
-      code: 'Mã vận đơn:',
+      quantity: 'Mã vận đơn:',
       sum: 'Tổng thu COD:',
       description: 'Ghi chú:',
       currency: 'VNĐ',
@@ -81,7 +81,7 @@ export class AppComponent {
       content: new FormControl(posData?.content, {
         validators: [Validators.required],
       }),
-      code: new FormControl(posData?.code),
+      quantity: new FormControl(posData?.quantity),
       sum: new FormControl(posData?.sum ?? 0, { 
         nonNullable: true,
         validators: [Validators.required],

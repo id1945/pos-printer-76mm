@@ -18,14 +18,16 @@
             <p>{{setting.sending.name}} <span [style.fontSize.px]="setting.style.sending.fontSize">{{formGroup.value?.name}}</span></p>
             <p>{{setting.sending.phone}} {{formGroup.value?.phone}}</p>
             <p>{{setting.sending.address}} {{formGroup.value?.address}}</p>
-            <p>{{setting.sending.content}} {{formGroup.value?.content}}</p>
           </td>
         </tr>
         <tr>
-          <td colspan="2" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.sum}} {{formGroup.value?.sum | number: setting.sending.format}} {{setting.sending.currency}}</td>
+          <td colspan="2" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.content}} {{formGroup.value?.content}} </td>
         </tr>
-        <tr *ngIf="formGroup.value?.code">
-          <td colspan="2" class="code" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.code}} {{formGroup.value?.code}} </td>
+        <tr>
+          <td colspan="2" [style.fontSize.px]="setting.style.fontSize" *ngIf="formGroup.value?.quantity">{{setting.sending.quantity}} {{formGroup.value?.quantity}} </td>
+        </tr>
+        <tr>
+          <td colspan="2" [style.fontSize.px]="setting.style.fontSize">{{setting.sending.sum}} {{formGroup.value?.sum | number: setting.sending.format}} {{setting.sending.currency}}</td>
         </tr>
         <tr *ngIf="formGroup.value?.description">
           <td colspan="2" [style.fontSize.px]="setting.style.fontSize">
@@ -47,8 +49,8 @@
       </div>
       <div class="col-lg-6 col-sm-12">
         <div class="form-group">
-          <label>Mã vận đơn:</label>
-          <input type="text" formControlName="code" class="form-control" />
+          <label>Số lượng:</label>
+          <input type="text" formControlName="quantity" class="form-control" />
         </div>
       </div>
       <div class="col-lg-6 col-sm-12">
@@ -171,8 +173,8 @@
                 <input type="text" [(ngModel)]="setting.sending.content" class="form-control" />
               </div>
               <div class="form-group">
-                <label>Mã đơn</label>
-                <input type="text" [(ngModel)]="setting.sending.code" class="form-control" />
+                <label>Số lượng</label>
+                <input type="text" [(ngModel)]="setting.sending.quantity" class="form-control" />
               </div>
               <div class="form-group">
                 <label>Tổng thu COD</label>
@@ -218,7 +220,7 @@
               <th [style.width.px]="200">Địa chỉ</th>
               <th [style.width.px]="200">Nội dung</th>
               <th [style.width.px]="200">Tổng tiền</th>
-              <th [style.width.px]="100">Mã đơn</th>
+              <th [style.width.px]="100">Số lượng</th>
               <th [style.width.px]="200">Ghi chú</th>
               <th [style.width.px]="100" colspan="2">Thao tác</th>
             </tr>
@@ -228,7 +230,7 @@
               <td>{{item.address}}</td>
               <td>{{item.content}}</td>
               <td>{{item.sum}}</td>
-              <td>{{item.code}}</td>
+              <td>{{item.quantity}}</td>
               <td>{{item.description}}</td>
               <td><button class="btn btn-info" data-dismiss="modal" (click)="onSelected(item)">Chọn</button></td>
               <td><button class="btn btn-danger" (click)="onDelete(item)">Xoá</button></td>
